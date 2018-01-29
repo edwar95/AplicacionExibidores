@@ -1,12 +1,13 @@
 <?php
 $usuario=$_POST['usuario'];
-$contraseña=$_POST['contraseña'];
+$contraseña=$_POST['contrasenia'];
+$tipo=$_POST['tipo'];
 //conectar a la bASE DE DATOS
-$conexion=mysqli connect("localhost","root",".","login");
-$consulta="SELECT * FROM usuario WHERE usuario='$usuario' and contraseña='$contraseña'";
-$resultado= mysqli query($conexion, $consulta);
+$conexion=new mysqli ("localhost","davidMorales","Edward10*","exibidores_db");
+$consulta=$conexion->query("SELECT * FROM usuarios WHERE nombreUser='$usuario' and password='$contraseña'and tipoUsuario='$tipo'") or die ("no sirve");
 
-$filas=mysqli_num_rows($resultado);
+##$resultado= mysqli ($conexion, $consulta);
+$filas=mysqli_num_rows($consulta);
 if($filas>0){
 header("location:principal.html");
 
@@ -14,7 +15,7 @@ header("location:principal.html");
 else {
   echo "Error en la conexion";
 }
-mysqli_fre_result($resultado);
+mysqli_free_result($consulta);
 mysqli_close($conexion);
 
  ?>
