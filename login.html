@@ -20,6 +20,15 @@ h2{
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.5);
 }
+label{
+text-align: center; 
+margin-bottom: 20px;
+padding: 10px;
+width: 100%;
+font-size: 20px;
+border: 5;
+
+}
 
 input{
 display: block;
@@ -51,7 +60,7 @@ select{
   color: black;
   opacity: 10;
   border-radius: 5px;
-  
+  font-size: 20px;
 }
 @media (max-width:768px) {
   form{
@@ -75,7 +84,7 @@ select{
       <h2> Login</h2>
       <input type="text" name="usuario" placeholder="&#128272; Usuario"/>
       <input type="password" name="contrasenia" placeholder="&#128272; Contraseña"/>
-      <label>Tipo de usuario: </br></label>
+      <label>Tipo de usuario:</label>
       <select name="tipo">
         <option>Administrador</option>
         <option>Vendedor</option>
