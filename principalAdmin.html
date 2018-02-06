@@ -1,98 +1,235 @@
-<html>
+<!DOCTYPE HTML>
+<html lang ="es">
+    <head>
+        <title>Administracion</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,user-scalable=no,initial=scale=1, maximum=scalable=1"> 
+        
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+                    
 
-<head>
-<title> Menu </title>
-<style type="text/css">
-  *{
-    padding: 0px;
-    margin: 0px;
-  }
-  #header{
-    margin: auto;
-    width: 500px;
-    font-family: helvetica, helvetica, sans-serif;
-  }
+        
+        
+         <style type="text/css">
+             
+            *{
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+                box-sizing: border-box;
+            }
+             
+            
+        
+            body{
+                margin: 2%;
+                font-family: sans-serif;
+                background: #559EA9;
+            }
+             
+            header{
+                width: 100%;
+                background:#223870 ; 
+                border-radius: 10px;
+                align-items: center; 
+            }
+             
+            #btn-menu{     
+                display: none;     
+            }
+             
+            header label {
+                display: none;
+                width: 30px;
+                height: 30px;
+                padding: 1%;
+                border-right: 1px solid #fff;
+            }
+             
+            header label:hover {
+                cursor: pointer;
+                background:#223870 ;
+            }    
+             
+            .menu ul{                 
+                margin: 0%; 
+                list-style: none;
+                padding: 0;
+                display: flex;
+            }
+             
+            .menu li{
+                text-align: center;
+                flex-grow: 1;
+                border-right: none;
+            }
+            
+            .menu li:hover {
+                background: #223870;
+            }
+            
+            .menu li a {
+                display: block;
+                padding: 10px 20px;
+                color: #fff;
+                text-decoration: none;
+            }
+             
+            .menu ul ul {
+                display: none;
+                flex-direction: column; 
+            }
+             
+            .menu a{
+                display: block;
+                padding: 10px 20px;
+            }
+            
+            .menu a:hover{
+                 
+                background: rgba(0,0,0,0.4);
+                border-radius: 10px;
+            }
+              
+            .menu ul li:hover ul{
+                display: block;
+                position: absolute;
+                background:#566BA3 ;
+                border-radius: 10px;
+            }
+            
+            @media(max-width:768px) {
+                header label{
+                    margin: 3%;
+                    display: block;
+                }
 
-  ul, ol{
-    list-style: none;
+                .menu{
+                    position: absolute;
+                    background: #223870;
+                    width: 30%;
+                    margin-left: -40%;
+                    transition: all 0.5s;
+                }
+                 
+                .menu ul{
+                    flex-direction: column;
+                    margin: 0%; 
+                }
 
-  }
-  .nav li a{
-    background-color: #000;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 15px;
-    display: block;
+                .menu ul li:hover ul{
+                    display: none;
+                }
+                 
+                .menu li {
+                    border-top: 1px solid #fff;
+                }
+                 
+                #btn-menu:checked ~ .menu {
+                    margin: 0%;
+                }
+                 
+                html, main{
+                    height: 100%;
+                }  
+            }
+             
+            .horizontal{
+                display: flex;
+                justify-content: center;
+            }
 
-  }
-  .nav > li{
-float: left;
+            .vertical{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
 
-  }
-  .nav li ul{
-      display: none;
-      position: absolute;
-      min-width: 140px;
+            .divPadre{
+                height: 100%
+            }
+             
+      
+             
 
-  }
-  .nav li:hover> ul{
-display: block;
+        </style>    
 
-  }
+    </head>
+    <body>
+        <header>
+            <input type="checkbox" id="btn-menu">
+            <label for="btn-menu"> <img src="1496968559-jd25_84667.png" all=""> </label>
+            <nav class="menu">
+            
+                <ul>
+                    <li class="submenu"><a href=""> VENDEDORES   </a>
+                        <ul>
+                        <li  ><a href="registrarVendedor.html"> Registrar Vendedor</a>  </li>
+                        <li  ><a href="">  Buscar </a>  </li>
+                        </ul>             
+     
+                    </li>
+                    
+                    <li><a href=""> CLIENTES  </a>
+                        <ul>
 
-  .nav li ul li {
-    position: relative;
+                        <li  ><a href="">  Registrar Cliente </a>  </li>
+                            <li  ><a href="">  Buscar </a>  </li>
+                        
+                                
+                </ul>   
+                        </li> 
+                    
+                    <li class="submenu"><a href=" "> EXHIBIDORES  </a>
+                    <ul>
+                        <li  ><a href=""> Datos Exhibidor</a>  </li>
+                            <li  ><a href=" ">  Buscar </a>  </li>
+                            <li><a href="acercade.html"> STOCK  </a>
+                        
+                        </ul>           
+     
+                    </li>
+                    
+                    <li><a href=""> GUIA DE ENTREGA  </a>
+                    <ul>
+                        <li  ><a href=""> Registrar Guia</a> </li>
+                        
+                        <li  ><a href="">  Buscar </a>  </li>
+                        
+                        </ul> 
+                    
+                    </li>
+                    <li><a href=""> REPORTES  </a>
+                         <ul>
+                        <li  ><a href=""> Clientes</a>  </li>
+                            <li  ><a href="">  Exhibidores </a>  </li>
+                        
+                        </ul> 
+                    
+                    
+                    </li>
+                    
+                    
+                
+            
+            </nav>
+        </header>    
+        
+        <main>
+            <div   class="horizontal divPadre">
+                <div   class="vertical">
+        <IMG  id="imgpoli" SRC ="EPN.png"  width =180>
+                    <div id="img" class="imagenpoli"></div>
+            
+                       
+                </div>
+            </div>
+               <center>  <h2>SISTEMA DE GESTIÓN Y REGISTRO DE EXHIBIDORES EN LOCALES COMERCIALES </h2></center>
+        </main>
+    
+    </body>
+         
+   
 
-  }
-  .nav li ul li ul{
-    right: -140px;
-    top: 0px;
-  }
-
-</style>
-
-
-</head>
-
-<body>
-<div id = "header">
-<ul class="nav">
-<li><a href="">Empleados</a>
-  <ul>
-    <li><a href="">Pestaña</a>
-      <ul>
-        <li><a href="">submenu</a></li>
-        <li><a href="">submenu1</a></li>
-        <li><a href="">submenu2</a></li>
-      </ul>
-    </li>
-    <li><a href="">Pestaña1</a></li>
-    <li><a href="">Pestaña2</a></li>
-  </ul>
-</li>
-<li><a href="">Vendedores</a>
-    <ul>
-      <li><a href="registrarVendedor.html">Registrar Vendedor</a></li>
-      <li><a href="">Pestaña1</a></li>
-      <li><a href="">Pestaña2</a></li>
-    </ul>
-</li>
-<li><a href="">Conductores</a>
-  <ul>
-    <li><a href="">Pestaña</a></li>
-    <li><a href="">Pestaña1</a></li>
-    <li><a href="">Pestaña2</a></li>
-  </ul>
-</li>
-<li><a href="">Exibidores</a>
-  <ul>
-    <li><a href="">Pestaña</a></li>
-    <li><a href="">Pestaña1</a></li>
-    <li><a href="">Pestaña2</a></li>
-  </ul>
-</li>
-
-</ul>
-</body>
 
 </html>
