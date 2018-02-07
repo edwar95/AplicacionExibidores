@@ -1,0 +1,88 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" href="./css/reset.css"> 
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,1000" rel="stylesheet"> 
+  <link rel="stylesheet" href="registrarVendedor.css"> 
+  <title>Formulario</title> 
+</head> 
+<body> 
+ 
+ 
+  <div class="container"> 
+    <div class="form__top"> 
+      <h2>Registrar<span> Guia de Entrega </span></h2> 
+    </div> 
+    <form class="form__reg" action="registrarVendedor.php" method="post"> 
+        <input class="input" type="text" placeholder="&#x0023;  Nº Guia" name="id_guia" required autofocus> 
+        <input class="input" type="date" placeholder="&#128100;  Fecha de Entrega" name="fechaEntrega" required autofocus > 
+        <input class="input" type="text" placeholder="&#128100;  Distribuidor" name="distribuidor" required autofocus > 
+        <input class="input" type="text" placeholder="&#128100;  Vendedor" name="facilitador" required autofocus > 
+        <input class="input" type="text" placeholder="&#128100;  Facilitador" name="facilitador" required autofocus > 
+ 
+        <input class="input" type="text" placeholder="&#x0023;  Nº Cliente" name="id_cliente" required autofocus> 
+        <input class="input" type="text" placeholder="&#x1F4B3;  Cedula o RUC" name="cedulaVendedor" required autofocus > 
+        <input class="input" type="text" placeholder="&#128100;  Nombre o Razon Social" name="NombreCliente" required autofocus > 
+        <input class="input" type="text" placeholder="&#128222;  Telefono" name="telefonoVendedor" required> 
+ 
+        <button onclick = "findMe()"> Mostrar Ubicación </button> 
+            <div id="map"></div> 
+              <script>src = "https://maps.googleapis/maps/api/js?key=AIzaSyCt3c7gUKlnTyTE9VaMNzJK4MfrDnUnzBQ"</script> 
+              <script> 
+                function findMe(){ 
+                    var outpu = document.getElementById('map'); 
+                    if (navegator.geolocation){ 
+                  ouput.innerHTML = "<p>Tu Navegador soporta localizacion</p>"; 
+                  } else{ 
+                  ouput.innerHTML = "<p>Tu Navegador no soporta localizacion</p>"; 
+                  } 
+                  function localizacion(posicion){ 
+                    var latitude = posicion.cords.latide; 
+                    var longitude = posicion.cords.longitude; 
+                    ouput.innerHTML = "<p>Latitud "+latitude+" <br> Longitud "+longitude+" </p>"; 
+                    var imgURL = "https://maps.googleapis.com/maps/api/staticmap?center="+latitude+","+longitude+"&size=600x300&markers=color:red%7C"+latitude+","+longitude+"&key=AIzaSyCt3c7gUKlnTyTE9VaMNzJK4MfrDnUnzBQ "; 
+           output.innerHTML ="<img src='"+imgURL+"'>"; 
+ 
+                  } 
+                  function error(){ 
+                    ouput.innerHTML = "<p>no se optiene ubicacion</p>" 
+                  } 
+                  navigator.geolocation.getCurrentPosition(localizacion,error) 
+                 } 
+               </script> 
+        <TR> 
+ 
+            <FONT COLOR="gray" SIZE=5>Motivo: </FONT><br> 
+            <FONT COLOR="gray">Cambio </FONT> <INPUT class="input" TYPE="RADIO" NAME="clase" VALUE="cambio"> 
+            <FONT COLOR="gray">Mal Estado</FONT>  <INPUT class="input" TYPE="RADIO" NAME="clase" VALUE="malEstado"> 
+            <FONT COLOR="gray">Otro </FONT> <INPUT class="input" TYPE="RADIO" NAME="clase" VALUE="otro"> 
+            <br> 
+ 
+ 
+        <TR> 
+ 
+            <FONT COLOR="gray" SIZE=5>Exhibidor: </FONT><br> 
+            <SELECT NAME="exhibidor"class="input"> 
+            <OPTION><FONT COLOR="gray">2BP </FONT> 
+            <OPTION><FONT COLOR="gray">4BP </FONT> 
+            <OPTION><FONT COLOR="gray">5BP </FONT> 
+            <OPTION><FONT COLOR="gray">6BM </FONT> 
+            <OPTION><FONT COLOR="gray">6BG </FONT> 
+            <OPTION><FONT COLOR="gray">8BG </FONT> 
+            <OPTION><FONT COLOR="gray">oTRO </FONT> 
+            <br> 
+       <TR> 
+ 
+            <textarea class="input" placeholder="&#128172; Comentario:" rows="5" id="comment"></textarea> 
+ 
+              <div class="btn__form"> 
+                <input class="btn__submit" type="submit" value="REGISTRAR"> 
+                <input class="btn__reset" type="reset" value="LIMPIAR"> 
+              </div> 
+    </form> 
+4 file changes in working directory
+View changes
+commit:0fdf4c
+GuiaKathy
