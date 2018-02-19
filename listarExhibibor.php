@@ -1,16 +1,13 @@
-<!DOCTYPE HTML>
-<html lang ="es">
-    <head>
-        <title>Administracion</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,user-scalable=no,initial=scale=1, maximum=scalable=1"> 
-        
-        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-                    
-
-        
-        
-         <style type="text/css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Vendedores</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/estilos.css">	
+	<script src="js/metodos.js"></script>
+	<style type="text/css">
              
             *{
                 margin: 0;
@@ -24,7 +21,7 @@
             body{
                 margin: 2%;
                 font-family: sans-serif;
-                background: #559EA9;
+                background: #FFF;
             }
              
             header{
@@ -153,19 +150,19 @@
              
 
         </style>    
+</head>
+<body>
 
-    </head>
-    <body>
-        <header>
+	<header>
             <input type="checkbox" id="btn-menu">
             <label for="btn-menu"> <img src="1496968559-jd25_84667.png" all=""> </label>
             <nav class="menu">
             
                 <ul>
-                    <li class="submenu"><a href=""> VENDEDORES   </a>
+                    <li class="submenu"><a href=""> EXHIBIDORES   </a>
                         <ul>
-                        <li  ><a href="principalVen.php"> Registrar Vendedor</a>  </li>
-                        <li  ><a href="principalVen.php">  Buscar </a>  </li>
+                        <li  ><a href="registrarVendedor.html"> Registrar Vendedor</a>  </li>
+                        <li  ><a href="listar.php">  Buscar </a>  </li>
                         </ul>             
      
                     </li>
@@ -173,8 +170,8 @@
                     <li><a href=""> CLIENTES  </a>
                         <ul>
 
-                        <li  ><a href="registrarCliente.html">  Registrar Cliente </a>  </li>
-                            <li  ><a href="listarCliente.php">  Buscar </a>  </li>
+                        <li  ><a href="principalAdmin.php">  Registrar Cliente </a>  </li>
+                            <li  ><a href="principalAdmin.php">  Buscar </a>  </li>
                         
                                 
                 </ul>   
@@ -182,25 +179,26 @@
                     
                     <li class="submenu"><a href=" "> EXHIBIDORES  </a>
                     <ul>
-                        <li  ><a href="principalVen.php"> Registrar Exhibidor</a>  </li>
-                            <li  ><a href="">  Buscar </a>  </li>
+                        <li  ><a href="registrarExhibidor.html"> Registrar Exhibidor</a>  </li>
+                            <li  ><a href="listarExhibibor.php">  Buscar </a>  </li>
+                           
                         </ul>           
      
                     </li>
                     
                     <li><a href=""> GUIA DE ENTREGA  </a>
                     <ul>
-                        <li  ><a href="registrarGuia.html"> Registrar Guia</a> </li>
+                        <li  ><a href="principalAdmin.php"> Registrar Guia</a> </li>
                         
-                        <li  ><a href="">  Buscar </a>  </li>
+                        <li  ><a href="principalAdmin.php">  Buscar </a>  </li>
                         
                         </ul> 
                     
                     </li>
                     <li><a href=""> REPORTES  </a>
                          <ul>
-                        <li  ><a href=""> Clientes</a>  </li>
-                            <li  ><a href="">  Exhibidores </a>  </li>
+                        <li  ><a href="principalAdmin.php"> Clientes</a>  </li>
+                            <li  ><a href="principalAdmin.php">  Exhibidores </a>  </li>
                         
                         </ul> 
                     
@@ -212,22 +210,97 @@
             
             </nav>
         </header>    
-        
-        <main>
-            <div   class="horizontal divPadre">
-                <div   class="vertical">
-        <IMG  id="imgpoli" SRC ="EPN.png"  width =180>
-                    <div id="img" class="imagenpoli"></div>
-            
-                       
+
+	<div class="container">
+		<div class="row">	
+
+			<table class='table'>
+				<tr>
+					<th>Id</th><th>Tipo</th><th>Stock</th><th><span class="glyphicon glyphicon-wrench"></span></th>
+				</tr>			
+<?php
+			
+			$mysqli =new mysqli ("localhost","davidMorales","Edward10*","pruebas");	
+			if ($mysqli->connect_errno) {
+			    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+			    exit();
+			}
+			$consulta= "SELECT * FROM stock";
+			if ($resultado = $mysqli->query($consulta)) 
+			{
+				while ($fila = $resultado->fetch_row()) 
+				{					
+					echo "<tr>";
+					echo "<td>$fila[0]</td><td>$fila[1]</td><td>$fila[2]</td>";	
+					echo"<td>";						
+				    echo "<a data-toggle='modal' data-target='#editUsu' data-id='" .$fila[0] ."' data-tipo='" .$fila[1] ."'data-stock='" .$fila[2] ."'class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span>Editar Stock</a> ";					
+					echo "</td>";
+					echo "</tr>";
+				}
+				$resultado->close();
+			}
+			$mysqli->close();			
+			
+	
+
+?>
+	        </table>
+		</div> 
+
+
+		
+
+		<div class="modal" id="editUsu" tabindex="-1" role="dialog" aria-labellebdy="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4>Editar Stock</h4>
+                    </div>
+                    <div class="modal-body">                      
+                       <form action="actualizarStock.php" method="POST">                       		
+                       		        
+                       		        <input  id="id" name="id" type="hidden" ></input>   		
+		                       		
+		                       		
+		                       		<div class="form-group">
+		                       			<label for="tlf_ven">Stock:</label>
+		                       			<input class="form-control" id="stock" name="stock" type="text" ></input>
+		                       		</div>
+		                       		
+
+									<input type="submit" class="btn btn-success">							
+                       </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+                    </div>
                 </div>
             </div>
-               <center>  <h2>SISTEMA DE GESTIÓN Y REGISTRO DE EXHIBIDORES EN LOCALES COMERCIALES </h2></center>
-        </main>
-    
-    </body>
-         
-   
+        </div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>		
+	<script>			 
+		  $('#editUsu').on('show.bs.modal', function (event) {
+		  var button = $(event.relatedTarget) // Button that triggered the modal
+		  var recipient0 = button.data('id')
+		  var recipient2 = button.data('tipo')
+		  var recipient3 = button.data('stock')
+		  
 
+		   // Extract info from data-* attributes
+		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		 
+		  var modal = $(this)		 
+		  modal.find('.modal-body #id').val(recipient0)
+		  modal.find('.modal-body #tipo').val(recipient2)
+		  modal.find('.modal-body #stock').val(recipient3)
+		  	
 
-</html>
+		});
+		
+	</script>
+	
+</body>
+</html>		

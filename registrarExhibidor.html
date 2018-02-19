@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+  <link rel="stylesheet" href="registrarVendedor.css">
+  <title>Formulario</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="form__top">
+      <h2>Registrar<span>Exhibidor</span></h2>
+    </div>    
+    <form class="form__reg" action="registrarExhibidor.php" method="post">
+              <input class="input" type="text" placeholder="&#84;   Tipo" name="tipo" required autofocus>
+              <input class="input" type="text" placeholder="&#35;  Tamaño" name="tamanio"  >
+              <input class="input" type="text" placeholder="&#35;  Peso" name="peso"  >
+              <input class="input" type="text" placeholder="&#49;&#48; Stock" name="stock"  >
+              
+              
+              <div class="btn__form">
+                <input class="btn__submit" type="submit" value="REGISTRAR">
+                <input class="btn__reset" type="reset" value="LIMPIAR"> 
+              </div>
+    </form>
+  </div>
+  
+</body>
+</html>

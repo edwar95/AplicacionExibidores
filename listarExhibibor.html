@@ -180,7 +180,7 @@
                     <li class="submenu"><a href=" "> EXHIBIDORES  </a>
                     <ul>
                         <li  ><a href="registrarExhibidor.html"> Registrar Exhibidor</a>  </li>
-                            <li  ><a href="listarExhibibor.php">  Buscar </a>  </li>
+                            <li  ><a href="listarExhibidor.php">  Buscar </a>  </li>
                            
                         </ul>           
      
@@ -216,7 +216,7 @@
 
 			<table class='table'>
 				<tr>
-					<th>Id</th><th>Nombres</th><th> </th><th>Apellidos</th><th> </th><th>Cedula</th><th>Pasaporte</th><th>Teléfono</th><th>Código</th><th><span class="glyphicon glyphicon-wrench"></span></th>
+					<th>Id</th><th>Tipo</th><th>Stock</th><th><span class="glyphicon glyphicon-wrench"></span></th>
 				</tr>			
 <?php
 			
@@ -225,13 +225,13 @@
 			    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 			    exit();
 			}
-			$consulta= "SELECT * FROM vendedor";
+			$consulta= "SELECT * FROM stock";
 			if ($resultado = $mysqli->query($consulta)) 
 			{
 				while ($fila = $resultado->fetch_row()) 
 				{					
 					echo "<tr>";
-					echo "<td>$fila[0]</td><td>$fila[1]</td><td>$fila[2]</td><td>$fila[3]</td><td>$fila[4]</td><td>$fila[5]</td><td>$fila[6]</td><td>$fila[7]</td><td>$fila[9]</td>";	
+					echo "<td>$fila[0]</td><td>$fila[1]</td><td>$fila[2]</td>;	
 					echo"<td>";						
 				    echo "<a data-toggle='modal' data-target='#editUsu' data-id_ven='" .$fila[0] ."' data-nombre1_ven='" .$fila[1] ."'data-nombre2_ven='" .$fila[2] ."'  data-apellido1_ven='" .$fila[3] ."' data-apellido2_ven='".$fila[4] ."' data-cedula_ven='" .$fila[5] ."'data-pasaporte_ven='" .$fila[6] ."'data-tlf_ven='" .$fila[7] ."'data-cod_ven='" .$fila[9] ."'  class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span>Editar</a> ";			
 					echo "<a class='btn btn-danger' href='eliminarVendedor.php?id_ven=" .$fila[0] ."'><span class='glyphicon glyphicon-remove'></span>Eliminar</a>";		
