@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,1000" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script src="http://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+	<link href="css/daterangepicker.css" rel="stylesheet" />
+	<script src="js/daterangepicker.js"></script>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="jspdf.debug.js"></script>
+	<!--<script src="http://mrrio.github.io/jsfPDF/dist/jspdf.debug.js"></script>-->
+	<title><!--&#128220;--> Reportes</title>
+</head>
+<body>
+	<div id="reporte">
+		<div align="center">
+			<h1>	&#128220;Reportes</h1>
+			<h3>Seleccione el periodo del que desea obtener resultdos:</h3>
+
+			<form action="reporte_array.php" method="post">
+				<div>
+					<input id="fechas" type="text" />
+				</div>
+			</form>
+			<input name="Imprimir" onclick="DescargarPDF('reporte','Archivo')" type="submit" id="Imprimir" value="PDF" />
+
+			<div class="table-responsive">
+				<table class="table table-hover" method="post">
+					<thead>
+						<tr>
+							<th>Fecha de Entrega</th>
+							<th>Num.Guia</th>
+							<th>Distribuidor</th>
+							<th>Facilitador</th>
+							<th>Vendedor</th>
+							<th>Num. Cliente</th>
+							<th>Cedula o RUC</th>
+							<th>Nombre o Razon Social</th>
+							<th>Telefono</th>
+							<th>Exhibidor</th>
+							<th>Motivo</th>
+							<th>Comentario</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+
+			<!--<input type="submit" value="CONSULTAR" />-->
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+	$('#fechas').daterangepicker();
+</script>
+<script>
+	function DescargarPDF(ContenidoID, nombre) {
+		var pdf = new jsPDF('L', 'mm', 'A2');
+		html = $('#' + ContenidoID).html();
+		specialElementHandlers = {};
+		margins = { top: 10, bottom: 20, left: 20, width: 2000, height: 2000 };
+		pdf.fromHTML(
+			html, margins.left, margins.top, {
+				'width': margins.width
+			}, function (dispose) {
+				pdf.save(nombre + 'pdf');
+			}, margins);
+	}
+</script>
